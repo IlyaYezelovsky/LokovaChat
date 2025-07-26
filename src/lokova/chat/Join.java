@@ -4,10 +4,15 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+import ilya.util.Msgbox;
+
 public class Join {
 	
 	private JFrame frame;
 	private JPanel panel;
+	private JTextField usernameField;
+	private JTextField ipField;
+	private JPasswordField passwordField;
 	
 	public void go() {
 		frame = new JFrame("Join chatroom");
@@ -20,9 +25,9 @@ public class Join {
 		JLabel ipLabel = new JLabel("Server IP");
 		JLabel passwordLabel = new JLabel("Password");
 		
-		JTextField usernameField = new JTextField(10);
-		JTextField ipField = new JTextField(10);
-		JPasswordField passwordField = new JPasswordField(10);
+		usernameField = new JTextField(10);
+		ipField = new JTextField(10);
+		passwordField = new JPasswordField(10);
 		
 		JButton joinButton = new JButton("Join");
 		JButton cancelButton = new JButton("Cancel");
@@ -59,7 +64,16 @@ public class Join {
 	}
 	
 	private void join() {
-		
+		try {
+			Client client = new Client(ipField.getText().split(":")[0], Integer.parseInt(ipField.getText().split(":")[1]), usernameField.getText(), passwordField.getPassword());
+			client.join();
+		} catch (NumberFormatException e) {
+			Msgbox.error("Invalid IP address.");
+		} catch (ArrayIndexOutOfBoundsException e) {
+			Msgbox.error("Invalid IP address.");
+		} catch (Exception e) {
+			Msgbox.error(e);
+		}
 	}
 	
 }

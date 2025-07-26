@@ -1,7 +1,10 @@
 package lokova.chat;
 
 import java.awt.event.*;
+import java.io.*;
 import javax.swing.*;
+
+import ilya.util.Msgbox;
 
 public class Chatroom {
 	
@@ -10,10 +13,11 @@ public class Chatroom {
 	JTextArea msgArea;
 	private JTextField inputField;
 	private String serverIP;
-	private Thread readThread;
+	private Client client;
 	
-	public Chatroom(String ip) {
+	public Chatroom(String ip, Client cl) {
 		serverIP = ip;
+		client = cl;
 	}
 	
 	public void go() {
@@ -45,7 +49,7 @@ public class Chatroom {
 		exportButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent ev) {
-//				export();
+				export();
 			}
 		});
 
@@ -67,6 +71,25 @@ public class Chatroom {
 
 		panel.add(scroller);
 		panel.add(sendPanel);
+	}
+	
+	private void export() {
+		JFileChooser chooser = new JFileChooser();
+		File file;
+		chooser.showSaveDialog(frame);
+		if ((file = chooser.getSelectedFile()) != null) {
+			try {
+				FileWriter writer = new FileWriter(file);
+				writer.write(msgArea.getText());
+				writer.close();
+			} catch (IOException e) {
+				Msgbox.error("Failed exporting chat", e);
+			}
+		}
+	}
+	
+	private void quit() {
+		client.quit();
 	}
 	
 }
