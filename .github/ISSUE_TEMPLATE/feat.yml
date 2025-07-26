@@ -1,0 +1,34 @@
+name: Feature suggestion
+title: "[Feat] "
+description: Suggestions to add or improve the program
+labels:
+  - enhancement
+projects: IlyaYezelovsky/1
+assignees: IlyaYezelovsky
+body:
+  - type: checkboxes
+    id: checkboxes-0
+    attributes:
+      label: Self check
+      description: Please check these items before submitting issue
+      options:
+        - label: I confirm that the feature has not been implemented on the LATEST version of LokovaChat
+        - label: I confirm that I have search the issue list and this issue has not been submitted
+    validations:
+      required: true
+  - type: textarea
+    id: textarea-1
+    attributes:
+      label: Feature description
+    validations:
+      required: true
+  - type: textarea
+    id: textarea-2
+    attributes:
+      label: Reasons
+    validations:
+      required: true
+  - type: textarea
+    id: textarea-3
+    attributes:
+      label: Other information

@@ -1,0 +1,42 @@
+name: Bug report
+title: "[Bug] "
+description: Report the situation of the program not running as expected, like errors.
+labels:
+  - bug
+assignees: IlyaYezelovsky
+projects: IlyaYezelovsky/1
+body:
+  - type: checkboxes
+    id: checkboxes-0
+    attributes:
+      label: Self check
+      description: Please check these items before submitting issue
+      options:
+        - label: I comfirm that what I use is the LATEST version of LokovaChat
+        - label: I confirm that the problem is on the program itself rather than on the device or environment
+        - label: I confirm that I have search the issue list and this issue has not been submitted
+    validations:
+      required: true
+  - type: textarea
+    id: textarea-1
+    attributes:
+      label: Problem description
+      description: Describe the problem, and StackTrace, screenshots, etc.
+    validations:
+      required: true
+  - type: textarea
+    id: textarea-2
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: textarea-3
+    attributes:
+      label: Step to reproduce
+    validations:
+      required: true
+  - type: textarea
+    id: textarea-4
+    attributes:
+      label: Other information

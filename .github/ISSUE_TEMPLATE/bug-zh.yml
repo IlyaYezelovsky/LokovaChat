@@ -1,0 +1,42 @@
+name: Bug反馈
+title: "[Bug] "
+description: 程序漏洞，或者说不按预期运行的状况
+labels:
+  - bug
+assignees: IlyaYezelovsky
+projects: IlyaYezelovsky/1
+body:
+  - type: checkboxes
+    id: checkboxes-0
+    attributes:
+      label: 自检
+      description: 在提交Bug反馈前请自检以下内容
+      options:
+        - label: 我确认我使用的是最新版本的LokovaChat
+        - label: 我确认是程序本身而不是设备或环境的问题
+        - label: 我确认我已搜索过Issue列表，发现此Issue没有被提交过
+    validations:
+      required: true
+  - type: textarea
+    id: textarea-1
+    attributes:
+      label: 问题描述
+      description: 描述你遇到的情况，可附带StackTrace或截图等
+    validations:
+      required: true
+  - type: textarea
+    id: textarea-2
+    attributes:
+      label: 预期的行为
+    validations:
+      required: true
+  - type: textarea
+    id: textarea-3
+    attributes:
+      label: 复现步骤
+    validations:
+      required: true
+  - type: textarea
+    id: textarea-4
+    attributes:
+      label: 其他信息
