@@ -30,6 +30,13 @@ public class Join {
 		passwordField = new JPasswordField(10);
 		
 		JButton joinButton = new JButton("Join");
+		joinButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				join();
+			}
+		});
 		JButton cancelButton = new JButton("Cancel");
 		cancelButton.addActionListener(new ActionListener() {
 			@Override
