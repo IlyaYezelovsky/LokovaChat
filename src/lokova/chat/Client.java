@@ -32,12 +32,12 @@ public class Client {
 		try {
 			sock = new Socket(serverIP, serverPort);
 			streamReader = new InputStreamReader(sock.getInputStream());
-			ObjectOutputStream accountStream = new ObjectOutputStream(sock.getOutputStream());
-			accountStream.writeObject(username);
-			accountStream.writeObject(password);
-			accountStream.flush();
-			accountStream.close();
-			accountStream = null;
+//			ObjectOutputStream accountStream = new ObjectOutputStream(sock.getOutputStream());
+//			accountStream.writeObject(username);
+//			accountStream.writeObject(password);
+//			accountStream.flush();
+//			accountStream.close();
+//			accountStream = null;
 			reader = new BufferedReader(streamReader);
 			writer = new PrintWriter(sock.getOutputStream());
 			readThread = new Thread(new IncomingReader());

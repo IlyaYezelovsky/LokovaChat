@@ -12,9 +12,13 @@ public class Server {
 	ArrayList<PrintWriter> clientOutputStreams;
     TreeSet<String> onlinePlayers = new TreeSet<String>();
 	
-	public Server(int p, char[] pass) {
+	public Server(String name, int p, char[] pass) {
 		port = p;
 		password = pass;
+		Client client = new Client("127.0.0.1", port, name, password);
+		client.join();
+//		ServerGUI gui = new ServerGUI("127.0.0.1:" + port, client);
+//		gui.go();
 	}
 
 	class ClientHandler implements Runnable {
@@ -28,14 +32,14 @@ public class Server {
 			try {
 				sock = clientSocket;
 				clientIP = sock.getInetAddress().getHostAddress();
-				ObjectInputStream accountStream = new ObjectInputStream(sock.getInputStream());
-				clientUsername = (String) accountStream.readObject();
-				clientPassword = (char[]) accountStream.readObject();
-				if (!onlinePlayers.add(clientUsername) || clientPassword != password) {
-					sock.close();
-				}
-				accountStream.close();
-				accountStream = null;
+//				ObjectInputStream accountStream = new ObjectInputStream(sock.getInputStream());
+//				clientUsername = (String) accountStream.readObject();
+//				clientPassword = (char[]) accountStream.readObject();
+//				if (!onlinePlayers.add(clientUsername) || clientPassword != password) {
+//					sock.close();
+//				}
+//				accountStream.close();
+//				accountStream = null;
 				InputStreamReader isReader = new InputStreamReader(sock.getInputStream());
 				reader = new BufferedReader(isReader);
 			} catch (Exception e) {

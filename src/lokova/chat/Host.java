@@ -8,6 +8,7 @@ public class Host {
 	
 	private JFrame frame;
 	private JPanel panel;
+	private JTextField nameField;
 	private JTextField portField;
 	private JPasswordField passwordField;
 	
@@ -19,9 +20,11 @@ public class Host {
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 		
 		JLabel portLabel = new JLabel("Port");
+		JLabel nameLabel = new JLabel("Name");
 		JLabel passwordLabel = new JLabel("Password");
 		
 		portField = new JTextField(20);
+		nameField = new JTextField(20);
 		passwordField = new JPasswordField(20);
 		
 		JButton hostButton = new JButton("Host");
@@ -42,17 +45,21 @@ public class Host {
 		});
 		
 		JPanel portPanel = new JPanel();
+		JPanel namePanel = new JPanel();
 		JPanel passwordPanel = new JPanel();
 		JPanel buttonPanel = new JPanel();
 		
 		portPanel.add(portLabel);
 		portPanel.add(portField);
+		namePanel.add(nameLabel);
+		namePanel.add(nameField);
 		passwordPanel.add(passwordLabel);
 		passwordPanel.add(passwordField);
 		buttonPanel.add(hostButton);
 		buttonPanel.add(cancelButton);
 		
 		panel.add(portPanel);
+		panel.add(namePanel);
 		panel.add(passwordPanel);
 		panel.add(buttonPanel);
 		
@@ -62,7 +69,7 @@ public class Host {
 	}
 	
 	private void host() {
-		Server server = new Server(Integer.parseInt(portField.getText()), passwordField.getPassword());
+		Server server = new Server(nameField.getText(), Integer.parseInt(portField.getText()), passwordField.getPassword());
 		server.go();
 	}
 	

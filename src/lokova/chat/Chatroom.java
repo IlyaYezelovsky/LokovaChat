@@ -41,7 +41,7 @@ public class Chatroom {
 		sendButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent ev) {
-//				send();
+				send();
 			}
 		});
 
@@ -86,6 +86,10 @@ public class Chatroom {
 				Msgbox.error("Failed exporting chat", e);
 			}
 		}
+	}
+	
+	private void send() {
+		client.send(inputField.getText());
 	}
 	
 	private void quit() {
